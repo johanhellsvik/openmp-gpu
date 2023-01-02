@@ -1,5 +1,7 @@
 ## Build instruction for dardel.pdc.kth.se
 
+### Request a GPU node for interactive use
+
 ### Build with amdflang
 ml rocm/5.0.2
 amdflang -fopenmp -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx90a ex00.F90 -o ex00amdflang.x
@@ -27,7 +29,8 @@ ml craype-accel-amd-gfx90a
 ml PrgEnv-intel
 ftn -fopenmp ex00.F90 -o ex00aocc.x
 
-### Run
+### Run with (use the corresponding name of the executable)
+export CRAY_ACC_DEBUG=3 # Enables runtime debug messages for cce built executables
 ./ex00.x
 
 ### Display name of device

@@ -31,6 +31,14 @@ LDFLAGS=-fopenmp
 LIBS=
 endif
 
+ifeq ($(COMP),cce)
+FC=ftn
+CC=cc
+FCFLAGS=-O3 -fopenmp
+CCFLAGS=-g -O3 -fopenmp -I$(COMMONDIR)
+LDFLAGS=-fopenmp
+LIBS=
+endif
 
 EXE=heat_serial
 OBJS=main.o heat_mod.o core.o setup.o utilities.o io.o pngwriter_mod.o
